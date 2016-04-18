@@ -1,0 +1,105 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="col-md-7 control-label">Sort by price:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="PriceOrder= params.SortByPrice || PriceOrderList[0].Value" ng-model="PriceOrder" required="required" ng-options="orderValue.Value as orderValue.NameOrder for orderValue in PriceOrderList" ng-change="OnSelectEvent()"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">Color:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="Color= +params.ColorId" ng-model="Color" required="required" ng-options="color.ColorId as color.Color for color in colors" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">Maker:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-model="Maker" required="required" ng-options="maker.MakerId as maker.Maker for maker in makers" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">OS:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="OS= params.OS" ng-model="OS" required="required" ng-options="osName.OSId as osName.NameOS for osName in os" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">CPU:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="CPU= params.CPU" ng-model="CPU" required="required" ng-options="cpuName as cpuName for cpuName in cpu | unique:'type'" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">Diagonal:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="Diagonal= params.Diagonal" ng-model="Diagonal" required="required" ng-options="diagonal as diagonal for diagonal in diagonals | unique:'type'" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">GPU:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="GPU= params.GPU" ng-model="GPU" required="required" ng-options="gpuName as gpuName for gpuName in gpu | unique:'type'" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">RAM:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="RAM= +params.RAM" ng-model="RAM" required="required" ng-options="ramSize as ramSize for ramSize in ram | unique:'type'" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">ReleaseYears:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="ReleaseYear= +params.ReleaseYear" ng-model="ReleaseYear" required="required" ng-options="releaseYear as releaseYear for releaseYear in releaseYears | unique:'type'" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-7 control-label">ResolutionScreen:</label>
+                <div class="col-md-12 selectContainer">
+                    <select class="form-control" ng-init="ResolutionScreen= params.ResolutionScreen" ng-model="ResolutionScreen" required="required" ng-options="resolutionScreenItem as resolutionScreenItem for resolutionScreenItem in resolutionScreen | unique:'type'" ng-change="OnSelectEvent()">
+                        <option value="">---All---</option>
+                    </select>
+                </div>
+            </div>
+            <label class="col-md-7 control-label">Total number of phones: {{products.FilterPhonesCount}}</label>
+        </div>
+        <div class="col-md-10">
+            <ul class="phones">
+                <li ng-repeat="product in products.ListPage" class="thumbnail phone-listing">
+                    <a href="#/api/Products/{{product.PhoneId}}" class="thumb"><img ng-src="{{product.Pictures[0].PictureLink}}" alt="{{product.Name}}"></a>
+                    <a href="#/api/Products/{{product.PhoneId}}">{{product.Name}}</a>
+                    <h5 class="thumb">{{product.Price}} RUR</h5>
+                    <p>{{product.Description}}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="text-center">
+            <pagination class="pagination-sm"
+                        boundary-links="true"
+                        force-ellipses="true"
+                        rotate="false"
+                        num-pages="products.PagesCount"
+                        current-page="products.CurrentPage"
+                        max-size="maxCountPages">
+            </pagination>
+        </div>
+    </div>
+</div>

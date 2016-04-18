@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="phonecatApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Faceted E-Commerce Search</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/scripts")
+</head>
+<body>
+    <div class="navbar-collapse collapse">
+        @Html.Partial("_LoginPartial")
+    </div>
+    <div class="view-container">
+        <div ng-view class="view-frame"></div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div class="text-center">
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Faceted E-Commerce Search</p>
+            </footer>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

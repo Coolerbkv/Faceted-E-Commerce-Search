@@ -1,0 +1,61 @@
+﻿<div class="phone-images">
+    <img ng-src="{{img.PictureLink}}"
+         class="phone"
+         ng-repeat="img in product.Pictures"
+         ng-class="{active:mainImageUrl==img}">
+</div>
+    <h1>{{product.Name}}</h1>
+
+    <p>{{product.Description}}</p>
+
+    <ul class="phone-thumbs">
+        <li ng-repeat="img in product.Pictures">
+            <img ng-src="{{img.PictureLink}}" ng-click="setImage(img)">
+        </li>
+    </ul>
+    <ul class="specs">
+        <li>
+            <span>Price</span>
+            <dd> {{product.Price}} RUR</dd>
+        </li>
+         <li>
+            <span>CPU</span>
+            <dd>{{product.CPU}}</dd>
+        </li>
+        <li>
+            <span>Color</span>
+            <dd>{{product.Color.Color}}</dd>
+        </li>
+        <li>
+            <span>Diagonal</span>
+            <dd>{{product.Diagonal}}</dd>
+        </li>
+        <li>
+            <span>GPU</span>
+            <dd>{{product.GPU}}</dd>
+        </li>
+        <li>
+            <span>PackageContents</span>
+            <dd>{{product.PackageContents}}</dd>
+        </li>
+        <li>
+            <span>Maker</span>
+            <dd>{{product.Maker.Maker}}</dd>
+        </li>
+        <li>
+            <span>OS</span>
+            <dd>{{product.OS.NameOS}}</dd>
+        </li>
+        <li>
+            <span>RAM</span>
+            <dd>{{product.RAM}}</dd>
+        </li>
+        <li>
+            <span>ReleaseYear</span>
+            <dd>{{product.ReleaseYear}}</dd>
+        </li>
+        <li>
+            <span>ResolutionScreen</span>
+            <dd>{{product.ResolutionScreen}}</dd>
+        </li>
+    </ul>
