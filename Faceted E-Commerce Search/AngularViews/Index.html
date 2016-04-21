@@ -92,7 +92,8 @@
             </ul>
         </div>
         <div class="text-center">
-            <pagination class="pagination-sm"
+            <pagination ng-if="products.PagesCount" 
+                        class="pagination-sm"
                         boundary-links="true"
                         force-ellipses="true"
                         rotate="false"
@@ -100,6 +101,9 @@
                         current-page="products.CurrentPage"
                         max-size="maxCountPages">
             </pagination>
+        </div>
+        <div class="text-center" ng-if="!products.PagesCount">
+            <h4>Match is not found, please change search options</h4>
         </div>
     </div>
 </div>
